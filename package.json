@@ -12,6 +12,7 @@
   "main": "./dist/scratch-gui.js",
   "scripts": {
     "build": "npm run clean && webpack",
+    "build:subpath": "npm run clean && PUBLIC_PATH=/scratch/ webpack",
     "clean": "rimraf ./build ./dist",
     "deploy": "touch build/.nojekyll && gh-pages -t -d build -m \"[skip ci] Build for $(git log --pretty=format:%H -n1)\"",
     "prepublish": "node scripts/prepublish.mjs",
