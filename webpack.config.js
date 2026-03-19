@@ -26,7 +26,7 @@ const baseConfig = new ScratchWebpackConfigBuilder(
         rootPath: path.resolve(__dirname),
         enableReact: true,
         shouldSplitChunks: false,
-        publicPath: 'auto'
+        publicPath: process.env.PUBLIC_PATH || '/'
     })
     .setTarget('browserslist')
     .merge({
@@ -119,6 +119,9 @@ const buildConfig = baseConfig.clone()
         },
         output: {
             path: path.resolve(__dirname, 'build')
+        },
+        devServer: {
+            historyApiFallback: true
         }
     })
     .addPlugin(new HtmlWebpackPlugin({
